@@ -6,14 +6,9 @@
             <h2 class="mb-3">Популярные категории</h2>
             <div class="container">
                 <div class="row">
-                    <a class="col-4 link-primary" href="#">Категория1</a>
-                    <a class="col-4 link-primary" href="#">Категория2</a>
-                    <a class="col-4 link-primary" href="#">Категория3</a>
-                    <a class="col-4 link-primary" href="#">Категория4</a>
-                    <a class="col-4 link-primary" href="#">Категория5</a>
-                    <a class="col-4 link-primary" href="#">Категория6</a>
-                    <a class="col-4 link-primary" href="#">Категория7</a>
-                    <a class="col-4 link-primary" href="#">Категория8</a>
+                    @foreach($categories as $category)
+                        <a class="col-4 link-primary" href="{{ route('category.show', $category->id) }}">{{ $category->name }}</a>
+                    @endforeach
                 </div>
             </div>
         </div>
