@@ -2,8 +2,8 @@
 
 @section('content')
     <div class="container">
-        <div class="">
-            <h2 class="my-3">Популярные категории</h2>
+        <div class="mb-2">
+            <h2 class="mb-3">Популярные категории</h2>
             <div class="container">
                 <div class="row">
                     <a class="col-4 link-primary" href="#">Категория1</a>
@@ -18,7 +18,7 @@
             </div>
         </div>
         <div>
-            <h2 class="my-3">Все товары</h2>
+            <h2 class="mb-3">Все товары</h2>
 
             <div class="row g-3">
                 @foreach($products as $product)
