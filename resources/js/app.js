@@ -1,5 +1,7 @@
 import './bootstrap';
-import '../sass/app.scss'
+import '../sass/app.scss';
+
+import 'jquery-validation';
 
 import jQuery from 'jquery';
 
@@ -11,6 +13,19 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
+
+    const reviewForm = $('#reviewForm');
+
+    if(reviewForm){
+        reviewForm.validate({
+            rules: {
+                'review': {
+                    required: true,
+                    minlength: 5,
+                }
+            },
+        });
+    }
 
     const favButton = $('#favoriteButton');
 

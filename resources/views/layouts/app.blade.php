@@ -38,10 +38,10 @@
                 <!-- Right Side Of Navbar -->
                 <div class="d-flex flex-column flex-md-row align-items-md-center">
 
-                    <form class="d-flex my-2 my-md-0 me-md-4" action="{{ route('search') }}">
-
+                    <form class="d-flex my-2 my-md-0 me-md-4" action="{{ route('search') }}" method="POST">
+                        @csrf
                         <div class="input-group">
-                            <input type="search" class="form-control" placeholder="Поиск" aria-label="Поиск"
+                            <input type="search" name="query" class="form-control" placeholder="Поиск" aria-label="Поиск"
                                    aria-describedby="button-search">
                             <button class="btn btn-outline-primary" type="submit" id="button-search">
                                 <i class="bi bi-search-heart"></i>

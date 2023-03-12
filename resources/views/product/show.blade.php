@@ -116,7 +116,7 @@
     @auth
         <div class="modal fade" id="reviewModal" tabindex="-1" aria-labelledby="reviewModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
-                <form class="modal-content" action="{{ route('review.store') }}" method="POST"
+                <form class="modal-content" id="reviewForm" action="{{ route('review.store') }}" method="POST"
                       enctype="multipart/form-data">
                     <div class="modal-header">
                         <h1 class="modal-title fs-5" id="reviewModalLabel">Оставить отзыв о товаре</h1>
@@ -124,7 +124,6 @@
                     </div>
                     <div class="modal-body">
                         <div>
-{{--                            TODO: textarea validation--}}
                             @csrf
                             <input type="text" value="{{ Auth::user()->id }}" name="user_id" hidden>
                             <input type="text" value="{{ $product->id }}" name="product_id" hidden>

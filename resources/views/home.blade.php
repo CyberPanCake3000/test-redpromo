@@ -8,7 +8,7 @@
                 <div class="row">
                     @foreach($categories as $category)
                         <div class="col-6 col-md-4">
-                        <a class="link-primary" href="{{ route('category.show', $category->id) }}">{{ $category->name }}</a>
+                        <a class="link-primary" href="{{ route('category.show', $category->id) }}">{{ $category->name }} ({{ $category->review_count }})</a>
                         </div>
                     @endforeach
                 </div>
