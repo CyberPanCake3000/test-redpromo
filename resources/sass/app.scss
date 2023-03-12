@@ -6,3 +6,43 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+.rating-custom {
+    opacity: 0;
+    position: absolute;
+}
+
+.rating-custom, .rating-custom-label {
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.rating-custom-label {
+    position: relative;
+}
+
+.rating-custom + .rating-custom-label:before {
+    content: '\F588';
+    display: inline-block;
+    vertical-align: middle;
+    color: $yellow;
+    font-size: 2.5rem;
+    text-align: center;
+    margin-right: 10px;
+    font-family: 'bootstrap-icons';
+}
+
+
+.rating-custom:checked + .rating-custom-label:before {
+    content: "\F586";
+    font-family: 'bootstrap-icons';
+    color: $yellow;
+}
+
+.rating-custom:hover + .rating-custom-label{
+    content: "\F586";
+    font-family: 'bootstrap-icons';
+    color: $yellow;
+}
