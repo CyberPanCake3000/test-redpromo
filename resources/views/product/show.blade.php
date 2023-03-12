@@ -124,6 +124,7 @@
                     </div>
                     <div class="modal-body">
                         <div>
+{{--                            TODO: textarea validation--}}
                             @csrf
                             <input type="text" value="{{ Auth::user()->id }}" name="user_id" hidden>
                             <input type="text" value="{{ $product->id }}" name="product_id" hidden>
