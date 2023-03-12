@@ -13,6 +13,11 @@ class Review extends Model
 
     public function getUser()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class, 'user_id', 'id');
+    }
+
+    public function getPhotos()
+    {
+        return $this->hasMany(ReviewPhoto::class);
     }
 }
