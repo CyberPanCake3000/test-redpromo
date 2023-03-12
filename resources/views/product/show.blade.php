@@ -27,7 +27,14 @@
                                 <p class="card-text">{{ $product->description }}</p>
                             </div>
 
-                            <div class="card-text mt-auto"><small class="text-muted">{{ $product->created_at }}</small></div>
+                            <div class="card-text mt-auto">
+                                <div class="d-flex flex-row">
+                                    @foreach($product->getCategories as $category)
+                                        <span class="bg-primary rounded-2 p-2 text-white me-2">{{ $category->name }}</span>
+                                    @endforeach
+                                </div>
+                                <small class="text-muted">{{ $product->created_at }}</small>
+                            </div>
                         </div>
                     </div>
                 </div>

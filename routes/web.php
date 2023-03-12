@@ -8,8 +8,7 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\CategoryController;
 
 Route::get('/', function () {
-    $products = Product::paginate(10);
-    return view('home', ['products' => $products]);
+    return redirect()->route('home');
 });
 
 Auth::routes();
