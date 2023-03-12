@@ -12,7 +12,7 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'review' => 'required',
+            'review' => 'required|min:5|max:255',
             'images.*' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
@@ -31,7 +31,9 @@ class ReviewController extends Controller
             foreach ($request->file('images') as $image) {
 
                 $filename = uniqid().'_'.$review->id.'_'.time().'.'.$image->extension();
-                $path = $image->move($uploadPath, $filename);
+                $image->move($uploadPath, $filename);
+
+                $path = self::UPLOAD_PATH . '/' . $filename;
 
                 $reviewPhoto = new ReviewPhoto([
                     'path' => $path,

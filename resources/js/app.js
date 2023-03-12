@@ -4,3 +4,47 @@ import '../sass/app.scss'
 import jQuery from 'jquery';
 
 window.$ = jQuery;
+
+$(document).ready(function () {
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+    const favButton = $('#favoriteButton');
+
+    if(favButton)
+    {
+        favButton.on('click', function(e){
+            e.preventDefault();
+            const productID = $('#product_id').val();
+
+            $.ajax({
+                url: '/toggle-favorite/' + productID,
+                method: 'POST',
+                success:function (response){
+                    favoriteAction(response)
+                },
+            })
+
+            function favoriteAction(response)
+            {
+                let heart = $('#heart');
+
+                if(response.message === 'created')
+                {
+                    heart.removeClass('bi-suit-heart');
+                    heart.addClass('bi-suit-heart-filled');
+                }
+
+                if(response.message === 'deleted')
+                {
+                    heart.removeClass('bi-suit-heart-filled');
+                    heart.addClass('bi-suit-heart');
+                }
+            }
+        });
+
+    }
+});

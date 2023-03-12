@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\ProductImage;
 use App\Models\Category;
 use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
 
 class Product extends Model
 {
@@ -27,5 +28,10 @@ class Product extends Model
     public function getReviews()
     {
         return $this->hasMany(Review::class);
+    }
+
+    public function getFavorite()
+    {
+        return $this->hasMany(Favorite::class, 'product_id', 'id')->where('user_id', '=', Auth::id())->first();
     }
 }
