@@ -22,9 +22,37 @@ $(document).ready(function () {
                 'review': {
                     required: true,
                     minlength: 5,
-                }
+                },
+
             },
         });
+
+        reviewForm.on('submit', function(e){
+            e.preventDefault();
+
+            if(checkFiles()){
+                let reviewFormData = reviewForm.serializeArray();
+                $.ajax({
+                    url: reviewForm.attr('action'),
+                    method: reviewForm.attr('method'),
+                    data: reviewFormData,
+                    success: function (result){
+                        location.reload();
+                    }
+                });
+            }else{
+                alert('Максимум 3 изображения в отзыве!');
+            }
+
+        })
+
+        function checkFiles(){
+            if ($('input[type="file"]')[0].files.length > 3){
+                return false;
+            }
+            return true;
+        }
+
     }
 
     const favButton = $('#favoriteButton');
