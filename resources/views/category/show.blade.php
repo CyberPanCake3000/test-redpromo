@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="container mb-3">
+        <a href="{{ route('home') }}" class="btn btn-outline-primary p-1 px-3">
+            <i class="bi bi-arrow-left"></i>
+            <span>Вернуться в каталог</span>
+        </a>
+    </div>
     <div class="container">
         <h2 class="text-primary fw-bold">{{ $category->name }}</h2>
         <div>{{ $category->description }}</div>
